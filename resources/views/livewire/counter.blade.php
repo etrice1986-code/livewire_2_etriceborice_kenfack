@@ -21,4 +21,10 @@
         +5
     </button>
 
+
+    <button wire:click="decrementByNumber({{ $number }})"
+        class="btn btn-danger">
+        -5
+    </button>
+
 </div>

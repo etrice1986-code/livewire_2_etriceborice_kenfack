@@ -1,53 +1,60 @@
-<div class="container mt-5">
+<div class="container py-5">
     <div class="row justify-content-center">
-        <div class="col-12 col-md-6">
-            <h2 class="mb-4 fw-bold text-center">Crea un nuovo articolo</h2>
+        <div class="col-12 col-md-7 col-lg-6">
 
-            {{-- Message --}}
-            @if (@session('message'))
-                <div class="alert alert-success text-center">
-                    {{ session('message') }}
-                </div>
-            @endif
-            {{-- message end --}}
+            <div class="card shadow-lg border-0 rounded-4 p-4">
+                <h2 class="fw-bold text-center mb-4">Crea un nuovo articolo</h2>
 
-            <form wire:submit="store" action="#" method="POST">
-                @csrf
+                @if (session('message'))
+                    <div class="alert alert-success text-center rounded-3">
+                        {{ session('message') }}
+                    </div>
+                @endif
 
-                <div class="mb-3">
-                    <label for="title" class="form-label">Titolo</label>
-                    <input wire:model="title" type="text" id="title"
-                        class="form-control @error('title') is-invalid @enderror">
-                    @error('title')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                <form wire:submit="store" method="POST">
+                    @csrf
 
+                    <div class="mb-4">
+                        <label for="title" class="form-label fw-semibold">Titolo</label>
+                        <input wire:model="title" type="text" id="title"
+                            class="form-control form-control-lg rounded-3 @error('title') is-invalid @enderror"
+                            placeholder="Inserisci il titolo dell'articolo">
 
+                        @error('title')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <div class="mb-3">
-                    <label for="subtitle" class="form-label">Sottotitolo</label>
-                    <input wire:model="subtitle" type="text" id="subtitle"
-                        class="form-control @error('subtitle') is-invalid @enderror">
-                    @error('subtitle')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                    <div class="mb-4">
+                        <label for="subtitle" class="form-label fw-semibold">Sottotitolo</label>
+                        <input wire:model="subtitle" type="text" id="subtitle"
+                            class="form-control form-control-lg rounded-3 @error('subtitle') is-invalid @enderror"
+                            placeholder="Inserisci un sottotitolo">
 
-                <div class="mb-3">
-                    <label for="body" class="form-label">Contenuto</label>
-                    <textarea id="body" wire:model="body"
-                        class="form-control @error('body') is-invalid @enderror"></textarea>
-                    @error('body')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                    @enderror
-                </div>
+                        @error('subtitle')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-                <button type="submit" class="btn btn-primary w-100">
-                    Crea Articolo
-                </button>
+                    <div class="mb-4">
+                        <label for="body" class="form-label fw-semibold">Contenuto</label>
+                        <textarea id="body" wire:model="body" rows="5"
+                            class="form-control rounded-3 @error('body') is-invalid @enderror"
+                            placeholder="Scrivi il contenuto dell'articolo"></textarea>
 
-            </form>
+                        @error('body')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <button type="submit"
+                        class="btn btn-primary btn-lg w-100 rounded-3 fw-semibold shadow-sm">
+                        Crea Articolo
+                    </button>
+
+                </form>
+            </div>
+
         </div>
     </div>
 </div>

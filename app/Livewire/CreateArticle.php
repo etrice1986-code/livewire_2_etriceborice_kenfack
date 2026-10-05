@@ -4,17 +4,17 @@ namespace App\Livewire;
 
 use App\Models\Article;
 use Livewire\Component;
-use Livewire\Attributes\Validate; // <-- 1. Aggiunto questo import
+use Livewire\Attributes\Validate;
 
 class CreateArticle extends Component
 {
-    #[Validate('required|min:3')] // <-- 2. Lettera "V" maiuscola
+    #[Validate('required|min:3')]
     public $title;
 
-    #[Validate('required|min:3')] // <-- 2. Lettera "V" maiuscola
+    #[Validate('required|min:3')]
     public $subtitle;
 
-    #[Validate('required|min:3')] // <-- 2. Lettera "V" maiuscola
+    #[Validate('required|min:3')]
     public $body;
 
 
@@ -28,12 +28,12 @@ class CreateArticle extends Component
             'body' => $this->body
         ]);
 
-        $this->reset(['title', 'subtitle', 'body']);
-
-        session()->flash('message', 'Articolo creato con successo.');
+        return redirect()->route('articles.index')
+            ->with('message', 'Articolo creato con successo.');
     }
 
-    // Il metodo clearForm() non serve più perché hai usato correttamente $this->reset()!
+
+
 
     public function render()
     {

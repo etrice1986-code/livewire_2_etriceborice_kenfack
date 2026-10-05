@@ -9,7 +9,7 @@ class Counter extends Component
     public $count = 0;
     public $number = 5;
 
-    public function increment() //Action
+    public function increment()
     {
         $this->count++;
     }
@@ -17,12 +17,17 @@ class Counter extends Component
     public function decrement()
     {
         $this->count--;
-        //$this->count= $this->count + $number;
     }
 
-    public function incrementByNumber($number) // Action parametrica
+    public function incrementByNumber($number)
     {
         $this->count += $number;
+    }
+
+
+    public function decrementByNumber($number)
+    {
+        $this->count -= $number;
     }
 
     public function render()
